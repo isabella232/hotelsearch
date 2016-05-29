@@ -1,22 +1,56 @@
 <h1>Search Hotels</h1>
 
+<script type="text/javascript">
+	$(document).ready(function(){
+
+		var options = {
+
+		    url: "/hotels.json",
+
+		    getValue: function(element) {
+					 return element.searchableText;
+		    },
+
+				//matchResponseProperty: "name",
+
+		    // template: {
+		    //     type: "description",
+		    //     fields: {
+		    //         description: "searchableText"
+		    //     }
+		    // },
+
+				list: {
+		        match: {
+		            enabled: true
+		        },
+
+						onSelectItemEvent: function() {
+							var value = $("#hotel-search-txt").getSelectedItemData().name;
+							$("#hotel-search-txt").val(value);
+							$("#data-holder").val(value).trigger("change");
+						}
+		    },
+
+		    theme: "square"
+		};
+
+		$("#hotel-search-txt").easyAutocomplete(options);
+
+	});
+</script>
+
 <div class="container">
 	<div class="row">
         <div class="col-md-6">
           <form class="form-inline" action="/hotels/search" method="get">
             <div class="form-group" id="custom-search-input">
                 <div class="input-group col-md-12">
-                    <input name="query" type="text" class="form-control input-lg" placeholder="Search" />
+                    <input id="hotel-search-txt" name="query" type="text" class="form-control input-lg" placeholder="Search" />
                     <span class="input-group-btn">
                         <input value="Search" class="btn btn-info btn-lg glyphicon glyphicon-search" type="submit"/>
                     </span>
                 </div>
-            </div>
-            <div class="form-group">
-                <select name="field" id="memoryType"  class="form-control">
-                   <option value="name" selected="selected">Name</option>
-                   <option value="address">Address</option>
-                </select>
             </div>
           </form>
         </div>

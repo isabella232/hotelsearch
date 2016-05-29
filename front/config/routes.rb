@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   get 'hotels/search' => 'hotels#search'
+  get 'hotels/search_api' => 'hotels#search_api'
   post 'hotels/search' => 'hotels#search'
   resources :hotels
 

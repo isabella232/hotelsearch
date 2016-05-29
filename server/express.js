@@ -41,14 +41,23 @@ app.use(function(req, res, next) {
 
 app.get('/hotels', function(req, res, next) {
   var query = {};
-  if(req.query.field){
-    par = {};
-    par[req.query.op || '$regex'] = `${req.query.value}`;
-    query[req.query.field] = par;
+  var results;
+  if(req.query.value){
+    if(req.query.field){
+      par = {};
+      par[req.query.op || '$regex'] = `${req.query.value}`;
+      query[req.query.field] = par;
+      results = hotels.find(query);
+    }else{
+      results = hotels.where(function( obj ){
+        return obj.name.indexOf(req.query.value) > -1
+          || obj.address.indexOf(req.query.value) > -1;
+      });
+    }
+  }else{
+    results = hotels.find({});  
   }
-  console.log(query);
-  var h = hotels.find(query);
-  res.send(h);
+  res.send(results);
 })
 
 app.get('/hotel/:id', function(req, res, next) {

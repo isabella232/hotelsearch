@@ -22,8 +22,12 @@ class HotelsController < ApplicationController
   def edit
   end
 
+  def search_api
+    @hotels = params[:query] ? Hotel.search(params[:query]) : Hotel.all
+  end
+
   def search
-    @hotels = Hotel.find_by_field(params[:field],params[:query])
+    @hotels = params[:query] ? Hotel.search(params[:query]) : Hotel.all
   end
 
   # POST /hotels

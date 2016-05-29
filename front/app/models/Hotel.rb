@@ -12,7 +12,7 @@ class Hotel
   format :json
 
   attr_accessor :id, :name, :address, :star_rating, :accomodation_type
-  attr_reader :errors
+  attr_reader :errors, :searchableText
 
   def initialize(*args)
     @errors = ActiveModel::Errors.new(self)
@@ -23,8 +23,11 @@ class Hotel
     end
   end
 
+  def searchableText
+      "#{name} - #{address}"
+  end
+
   def self.all()
-    puts get('/hotels').parsed_response
     get('/hotels').parsed_response.collect{ |node| Hotel.new(node) }
   end
 
@@ -35,6 +38,11 @@ class Hotel
 
   def self.find_by_field(field, value)
     r = get('/hotels', :query => {:value => value, :field => field, :op => "$regex"})
+    r.parsed_response.collect{ |node| Hotel.new(node) }
+  end
+
+  def self.search(value)
+    r = get('/hotels', :query => {:value => value})
     r.parsed_response.collect{ |node| Hotel.new(node) }
   end
 
