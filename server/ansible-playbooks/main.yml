@@ -1,0 +1,16 @@
+---
+- hosts: all
+  user: vagrant
+  sudo: true
+  sudo_user: root
+
+  vars:
+    node_version: 6.1.0
+
+  roles:
+    - role: ansible-nginx
+    - role: ansible-softwares
+    - role: ansible-nodejs-apps
+      #apps:
+        #enabled:
+          #- "/vagrant"

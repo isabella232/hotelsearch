@@ -1,0 +1,14 @@
+
+> rest-api-express@0.0.4 start /vagrant
+> node express.js
+
+Express server listening on port 3000
+{}
+[0mGET /hotels [32m200 [0m41.755 ms - 864[0m
+
+> rest-api-express@0.0.4 start /vagrant
+> node express.js
+
+Express server listening on port 3000
+{}
+[0mGET /hotels [32m200 [0m39.302 ms - 864[0m

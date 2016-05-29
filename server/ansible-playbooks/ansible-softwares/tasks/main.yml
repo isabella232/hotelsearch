@@ -1,0 +1,25 @@
+---
+- name: Install packages
+  action: apt pkg={{item}} state=latest update-cache=yes
+  with_items:
+  - pkg-config
+  - build-essential
+  - git-core
+  - vim
+  - curl
+  - wget
+  - tree
+  - libssl-dev
+  - daemon
+
+- name: Download nodesource installer
+  get_url: url=https://deb.nodesource.com/setup_6.x dest=/tmp/nodesource-installer.sh
+
+- name: chmod nodesource installer
+  file: path=/tmp/nodesource-installer.sh state=file mode=777
+
+- name: Execute nodesource repo installer
+  shell: /tmp/nodesource-installer.sh
+
+- name: Install NodeJS
+  apt: pkg=nodejs state=latest update_cache=true

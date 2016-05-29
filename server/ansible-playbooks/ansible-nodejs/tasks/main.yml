@@ -1,0 +1,14 @@
+---
+- name: Install node
+  shell: >
+    wget -qO- https://deb.nodesource.com/setup_4.x | sudo bash -
+
+- name: Install node and set version
+  shell: >
+    /bin/bash -c "source ~/.nvm/nvm.sh"
+    creates=/home/{{ ansible_user_id }}/.nvm/alias
+
+- name: Install node and set version
+  shell: >
+    /bin/bash -c "source ~/.nvm/nvm.sh && nvm install 6.1.0 && nvm alias default 6.1.0"
+    creates=/home/{{ ansible_user_id }}/.nvm/alias
