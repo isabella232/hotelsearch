@@ -9,7 +9,7 @@ Using node 6.1.0, install de dependencies:
 
 Vagrant
 ----
-The api can also be executed with the script using vagrant + ansible provisioner by running
+The api can also be executed with vagrant + ansible provisioner by running
 - vagrant up
 - The api will be available at http://192.168.50.3:3030/hotels
 
