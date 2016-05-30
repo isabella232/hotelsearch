@@ -2,7 +2,7 @@
 
 Api
 ======
-Using node 6.1.0, install de dependencies:
+Using node 6.1.0, install the dependencies:
 - cd server
 - npm install
 
