@@ -5,7 +5,7 @@ class Hotel
   include HTTParty
   include ActiveModel::Conversion
   extend  ActiveModel::Naming
-  base_uri 'localhost:3030'
+  base_uri 'miranda.to:3030'
   headers 'Content-Type' => 'application/json'
   #basic_auth 'username', 'password'
   #default_params :output => 'json'
