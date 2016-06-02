@@ -1,0 +1,4 @@
+before_script: cd sqlite-front
+language: ruby
+rvm:
+  - 2.3.0
