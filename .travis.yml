@@ -1,5 +1,4 @@
-before_script: cd sqlite-front
-before_script: bundle install
+before_script: cd sqlite-front && bundle install
 language: ruby
 rvm:
   - 2.3.0
