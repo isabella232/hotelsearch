@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: Hotel One
+  address: Market Street
+  stars: 5
+  accommodation: 5
+
+two:
+  name: Hotel Two
+  address: Waterfront Ave
+  stars: 1
+  accommodation: 1
